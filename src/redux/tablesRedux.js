@@ -1,5 +1,6 @@
 //selectors
 export const getAllTables = ({ tables }) => tables;
+export const getTableById = ({ tables }, tableId) => tables.find(table => table.id === tableId);
 
 // actions
 const createActionName = actionName => `app/tables/${actionName}`;
@@ -9,7 +10,7 @@ const EDIT_TABLE = createActionName('EDIT_TABLE_ACTION');
 // action creators
 export const updateTables = payload => ({ type: UPDATE_TABLES, payload });
 export const editTable = payload => ({ type: EDIT_TABLE, payload });
-export const fetchBooks = () => {
+export const fetchTables = () => {
   return (dispatch) => {
     fetch('http://localhost:3131/tables')
       .then(res => res.json())
@@ -23,7 +24,7 @@ export const editTableRequest = (newTableValues) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ newTableValues })
+      body: JSON.stringify({ ...newTableValues })
     };
 
     fetch(`http://localhost:3131/tables/${newTableValues.id}`, options)
