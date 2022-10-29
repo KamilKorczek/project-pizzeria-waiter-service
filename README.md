@@ -1,2 +1,2 @@
 # heroku address
-https://git.heroku.com/project-pizzeria-waiter-servic.git
+https://project-pizzeria-waiter-servic.herokuapp.com/
